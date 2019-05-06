@@ -1,0 +1,243 @@
+package practice;                                                                                                                                                        
+                                                                                                                                                                         
+import java.util.Scanner;                                                                                                                                                
+import java.io.PrintWriter;                                                                                                                                              
+import java.time.LocalDateTime;                                                                                                                                          
+import java.time.format.DateTimeFormatter;                                                                                                                               
+import java.util.*;                                                                                                                                                      
+                                                                                                                                                                         
+public class Bill4 {                                                                                                                                                     
+	public String generateBill() throws Exception{                                                                                                                       
+		Scanner sc = new Scanner(System.in);                                                                                                                             
+		StringBuffer bill = new StringBuffer();                                                                                                                          
+                                                                                                                                                                         
+		// *******Capture Datas In ArrayList********                                                                                                                     
+		List<LineItem> list = new ArrayList<>();                                                                                                                         
+                                                                                                                                                                         
+		StringBuffer starLine = new StringBuffer();                                                                                                                      
+		for (int i = 0; i < 80; i++) {                                                                                                                                   
+			starLine.append("-");                                                                                                                                        
+		}                                                                                                                                                                
+                                                                                                                                                                         
+		// **********DATE Format*************                                                                                                                            
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");                                                                                      
+		LocalDateTime now = LocalDateTime.now();                                                                                                                         
+		// System.out.println(dtf.format(now));                                                                                                                          
+                                                                                                                                                                         
+		System.out.println("Enter company name::");                                                                                                                      
+		String compName = sc.nextLine();                                                                                                                                 
+                                                                                                                                                                         
+		System.out.println("Enter party name:: ");                                                                                                                       
+		String partyName = sc.nextLine();                                                                                                                                
+                                                                                                                                                                         
+		System.out.println("Enter address  of company:: ");                                                                                                              
+		String addComp = sc.nextLine();                                                                                                                                  
+                                                                                                                                                                         
+		System.out.println("Enter the address of party");                                                                                                                
+		String addParty = sc.nextLine();                                                                                                                                 
+                                                                                                                                                                         
+		System.out.println("Enter the telephone no of company:: ");                                                                                                      
+		String teleComp = sc.nextLine();                                                                                                                                 
+                                                                                                                                                                         
+		System.out.println("Enter the telephone no of party:: ");                                                                                                        
+		String teleParty = sc.nextLine();                                                                                                                                
+                                                                                                                                                                         
+		System.out.println("Enter the invoice no:: ");                                                                                                                   
+		String invoice = sc.nextLine();                                                                                                                                  
+                                                                                                                                                                         
+		System.out.println("sales person name:: ");                                                                                                                      
+		String salesPerson = sc.nextLine();                                                                                                                              
+                                                                                                                                                                         
+		System.out.println("Enter the no. of rows of fields u want 2 enter");                                                                                            
+		int n = sc.nextInt();                                                                                                                                            
+                                                                                                                                                                         
+		// First level                                                                                                                                                   
+		// Heading i.e Tax inVoice                                                                                                                                       
+                                                                                                                                                                         
+		bill.append(starLine);                                                                                                                                           
+		bill.append("\n");                                                                                                                                               
+		bill.append(String.format("|%39.39s", "Tax Invoice"));                                                                                                           
+		bill.append(String.format("%40s", "|"));                                                                                                                         
+                                                                                                                                                                         
+		// Company and Party Details                                                                                                                                     
+		bill.append("\n");                                                                                                                                               
+		bill.append(starLine);                                                                                                                                           
+		bill.append(String.format("\n|Company Name:%-26.20s|", compName));                                                                                               
+		bill.append(String.format("Party Name: %-26.20s|", partyName));                                                                                                  
+                                                                                                                                                                         
+		bill.append(String.format("\n|Add:%-35.38s|", addComp));                                                                                                         
+		bill.append(String.format("add:%-34.39s|", addParty));                                                                                                           
+                                                                                                                                                                         
+		bill.append(String.format("\n|Tele:%-34.28s|", teleComp));                                                                                                       
+		bill.append(String.format("Tele: %-32.29s|", teleParty));                                                                                                        
+		bill.append("\n");                                                                                                                                               
+		bill.append(starLine);                                                                                                                                           
+                                                                                                                                                                         
+		// Level 3                                                                                                                                                       
+		bill.append(String.format("\n|Invoice Number:%-18.5s", invoice));                                                                                                
+		bill.append(String.format("Inv Dt::%-13.10s", now));                                                                                                             
+		bill.append(String.format("Sales Person:%-9.9s", salesPerson));                                                                                                  
+		bill.append(String.format("%3s", "|"));                                                                                                                          
+                                                                                                                                                                         
+		bill.append("\n");                                                                                                                                               
+		bill.append(starLine);                                                                                                                                           
+		// Level 4                                                                                                                                                       
+                                                                                                                                                                         
+		bill.append("\n");                                                                                                                                               
+		bill.append(String.format("|%-7.3s", "HSN "));                                                                                                                   
+		bill.append(String.format("|%-4.7s", "PROD DESC"));                                                                                                              
+		bill.append(String.format("|%-6s", "MRP"));                                                                                                                      
+		bill.append(String.format("|%-6s", "BOX"));                                                                                                                      
+		bill.append(String.format("|%-7s", "RATE"));                                                                                                                     
+		bill.append(String.format("|%-7s", "SCHEME"));                                                                                                                   
+                                                                                                                                                                         
+		bill.append(String.format("|%-7s", "Dis.RATE"));                                                                                                                 
+                                                                                                                                                                         
+		bill.append(String.format("|%-6s", "GST%"));                                                                                                                     
+		bill.append(String.format("|%-7s", "GST AMT"));                                                                                                                  
+		bill.append(String.format("|%-7s", "NET AMT"));                                                                                                                  
+		bill.append(String.format("%-1s|", ""));                                                                                                                         
+                                                                                                                                                                         
+		bill.append("\n");                                                                                                                                               
+		bill.append(starLine);                                                                                                                                           
+		bill.append("\n");                                                                                                                                               
+                                                                                                                                                                         
+		float grossTotal = 0;                                                                                                                                            
+		float gstTotal = 0;                                                                                                                                              
+		float netTotal = 0;                                                                                                                                              
+		float count = 0;                                                                                                                                                 
+                                                                                                                                                                         
+		for (int j = 0; j < n; j++) {                                                                                                                                    
+			LineItem line = new LineItem();                                                                                                                              
+                                                                                                                                                                         
+			System.out.println("Enter HSN code:");                                                                                                                       
+			int mscn = sc.nextInt();                                                                                                                                     
+			line.setMscn(mscn);                                                                                                                                          
+			sc.nextLine();                                                                                                                                               
+                                                                                                                                                                         
+			System.out.println("Enter PROD DESC");                                                                                                                       
+			String prod = sc.nextLine();                                                                                                                                 
+			line.setProd(prod);                                                                                                                                          
+                                                                                                                                                                         
+			System.out.println("Enter MRP");                                                                                                                             
+			int mrp = sc.nextInt();                                                                                                                                      
+			line.setMrp(mrp);                                                                                                                                            
+                                                                                                                                                                         
+			System.out.println("Enter Box");                                                                                                                             
+			int box = sc.nextInt();                                                                                                                                      
+			line.setBox(box);                                                                                                                                            
+                                                                                                                                                                         
+			// *****SCHEME IS= PERCENT DISCOUNT ON RATE FOR EVERY PRODUCT                                                                                                
+			// INDIVIDUALLY**********                                                                                                                                    
+			System.out.println("Enter Scheme i.e.SCHEME IS PERCENT DISCOUNT ON RATE FOR EVERY PRODUCT INDIVIDUALLY");                                                    
+			int scheme = sc.nextInt();                                                                                                                                   
+			line.setScheme(scheme);                                                                                                                                      
+                                                                                                                                                                         
+			System.out.println("Enter GST%");                                                                                                                            
+			int gst1 = sc.nextInt();                                                                                                                                     
+			line.setGst1(gst1);                                                                                                                                          
+                                                                                                                                                                         
+			// ***************CALCULATIONS*********************                                                                                                          
+			line.setRate(line.getMrp() * line.getBox());                                                                                                                 
+			line.setDiscount(((100 - line.getScheme()) * line.getRate() / 100));                                                                                         
+			line.setGst2(((line.getGst1()) * (line.getDiscount()) / 100));                                                                                               
+			line.setNet((line.getGst2() + line.getDiscount()));                                                                                                          
+                                                                                                                                                                         
+			bill.append(String.format("|%-7.6s", line.getMscn()));                                                                                                       
+			bill.append(String.format("|%-7.8s", line.getProd()));                                                                                                       
+			bill.append(String.format("|%-6.8s", line.getMrp()));                                                                                                        
+			bill.append(String.format("|%-6.4s", line.getBox()));                                                                                                        
+			bill.append(String.format("|%-7.7s", line.getRate()));                                                                                                       
+			bill.append(String.format("|%-7s", line.getScheme()));                                                                                                       
+			bill.append(String.format("|%-8.8s", line.getDiscount()));                                                                                                   
+			bill.append(String.format("|%-6.4s", line.getGst1()));                                                                                                       
+			bill.append(String.format("|%-7.7s", line.getGst2()));                                                                                                       
+			bill.append(String.format("|%-7.7s", line.getNet()));                                                                                                        
+			bill.append(String.format("%-1.4s|", ""));                                                                                                                   
+			bill.append("\n");                                                                                                                                           
+                                                                                                                                                                         
+			// ******Calculations For Footer***********                                                                                                                  
+			grossTotal = (line.getRate() + grossTotal);                                                                                                                  
+			gstTotal = (line.getGst2() + gstTotal);                                                                                                                      
+			netTotal = (line.getNet() + netTotal);                                                                                                                       
+                                                                                                                                                                         
+			// *****BOX counting*******                                                                                                                                  
+			count = count + line.getBox();                                                                                                                               
+                                                                                                                                                                         
+			list.add(line);                                                                                                                                              
+		}                                                                                                                                                                
+		// ***********For Spaces*****************                                                                                                                        
+		for (int j = 0; j < 3; j++) {                                                                                                                                    
+			bill.append(String.format("|%-7.6s", ""));                                                                                                                   
+			bill.append(String.format("|%-7.8s", ""));                                                                                                                   
+			bill.append(String.format("|%-6.8s", ""));                                                                                                                   
+			bill.append(String.format("|%-6.4s", ""));                                                                                                                   
+			bill.append(String.format("|%-7.4s", ""));                                                                                                                   
+			bill.append(String.format("|%-7s", ""));                                                                                                                     
+			bill.append(String.format("|%-8.4s", ""));                                                                                                                   
+			bill.append(String.format("|%-6.4s", ""));                                                                                                                   
+			bill.append(String.format("|%-7.6s", ""));                                                                                                                   
+			bill.append(String.format("|%-7.6s", ""));                                                                                                                   
+			bill.append(String.format("%-1.4s|", ""));                                                                                                                   
+                                                                                                                                                                         
+			bill.append("\n");                                                                                                                                           
+		}                                                                                                                                                                
+		bill.append(starLine);                                                                                                                                           
+                                                                                                                                                                         
+		bill.append("\n");                                                                                                                                               
+                                                                                                                                                                         
+		bill.append(String.format("|CGST:%-7.6s", ""));                                                                                                                  
+		bill.append(String.format("|%-7.8s", ""));                                                                                                                       
+		bill.append(String.format("|%-6.8s", ""));                                                                                                                       
+		bill.append(String.format("|%-6.4s", ""));                                                                                                                       
+		bill.append(String.format("|%-7.4s", ""));                                                                                                                       
+		bill.append(String.format("|%-8s", ""));                                                                                                                         
+		bill.append(String.format("|%-9.4s", ""));                                                                                                                       
+		bill.append(String.format("|%-7.4s", ""));                                                                                                                       
+		bill.append(String.format("|%-8.6s|", ""));                                                                                                                      
+                                                                                                                                                                         
+		bill.append("\n");                                                                                                                                               
+		bill.append(String.format("|SGST:%-7.6s", ""));                                                                                                                  
+		bill.append(String.format("|%-7.8s", ""));                                                                                                                       
+		bill.append(String.format("|%-6.8s", ""));                                                                                                                       
+		bill.append(String.format("|%-6.4s", ""));                                                                                                                       
+		bill.append(String.format("|%-7.4s", ""));                                                                                                                       
+		bill.append(String.format("|%-8s", ""));                                                                                                                         
+		bill.append(String.format("|%-9.4s", ""));                                                                                                                       
+		bill.append(String.format("|%-7.4s", ""));                                                                                                                       
+		bill.append(String.format("|%-8.6s|", ""));                                                                                                                      
+                                                                                                                                                                         
+		bill.append("\n");                                                                                                                                               
+		bill.append(starLine);                                                                                                                                           
+		bill.append("\n");                                                                                                                                               
+                                                                                                                                                                         
+		/*********** Footer ***********************/                                                                                                                     
+                                                                                                                                                                         
+		bill.append(String.format("|Gross Tot: %-8.9s", grossTotal));                                                                                                    
+		bill.append(String.format("|Total Less:%-8.9s", ""));                                                                                                            
+		bill.append(String.format("|Total GST: %-8.6s", gstTotal));                                                                                                      
+		bill.append(String.format("|Net tot: %-9.6s|", netTotal));                                                                                                       
+                                                                                                                                                                         
+		bill.append("\n");                                                                                                                                               
+		bill.append(String.format("|Sch: %-14.9s", ""));                                                                                                                 
+		bill.append(String.format("|Disp Amt:%-10.9s", ""));                                                                                                             
+		bill.append(String.format("|Total Add: %-8.7s", ""));                                                                                                            
+		bill.append(String.format("|Box/QTY: %-9.8s|", count));                                                                                                          
+                                                                                                                                                                         
+		bill.append("\n");                                                                                                                                               
+		bill.append(String.format("|Total Disc:%-8.9s", ""));                                                                                                            
+		bill.append(String.format("|Total Dmg: %-8.9s", ""));                                                                                                            
+		bill.append(String.format("|Round off: %-8.7s|", ""));                                                                                                           
+		bill.append(String.format("%-18.8s|", ""));                                                                                                                      
+		bill.append("\n");                                                                                                                                               
+		bill.append(starLine);                                                                                                                                           
+		                                                                                                                                                                 
+                                                                                                                                                                         
+		PrintWriter pw = new PrintWriter("praveen.txt");                                                                                                                 
+		pw.println(bill);                                                                                                                                                
+		pw.close();                                                                                                                                                      
+		                                                                                                                                                                 
+		return bill.toString();                                                                                                                                          
+	}                                                                                                                                                                    
+}                                                                                                                                                                        
+                                                                                                                                                                         

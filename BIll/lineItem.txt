@@ -1,0 +1,140 @@
+package practice;
+
+public class LineItem {
+
+	int mscn;
+	String prod;
+	float mrp;
+	int box;
+	float rate;
+	float scheme;
+	float discount;
+	float gst1;
+	float gst2;
+	float net;
+
+	float grossTotal=0;
+	float gstTotal=0;
+	float netTotal=0;
+
+	public int getMscn() {
+		return mscn;
+	}
+
+	public void setMscn(int mscn) {
+		this.mscn = mscn;
+	}
+
+	public String getProd() {
+		return prod;
+	}
+
+	public void setProd(String prod) {
+		this.prod = prod;
+	}
+
+	public float getMrp() {
+		return mrp;
+	}
+
+	public void setMrp(float mrp) {
+		this.mrp = mrp;
+	}
+
+	public float getBox() {
+		return box;
+	}
+
+	public void setBox(int box) {
+		this.box = box;
+	}
+
+	public float getRate() {
+		return rate;
+	}
+
+	public void setRate(float rate) {
+		this.rate = rate;
+	}
+
+	public float getScheme() {
+		return scheme;
+	}
+
+	public void setScheme(float scheme) {
+		this.scheme = scheme;
+	}
+
+	public float getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(float discount) {
+		this.discount = discount;
+	}
+
+	public float getGst1() {
+		return gst1;
+	}
+
+	public void setGst1(float gst1) {
+		this.gst1 = gst1;
+	}
+
+	public float getGst2() {
+		return gst2;
+	}
+
+	public void setGst2(float gst2) {
+		this.gst2 = gst2;
+	}
+
+	public float getNet() {
+		return net;
+	}
+
+	public void setNet(float net) {
+		this.net = net;
+	}
+
+	public float getGrossTotal() {
+		return grossTotal;
+	}
+
+	
+
+	public float getGstTotal() {
+		return gstTotal;
+	}
+
+	
+
+	public float getNetTotal() {
+		return netTotal;
+	}
+
+
+
+	public LineItem() {
+		super();
+	}
+
+	public LineItem(int mscn, String prod, float mrp, int box, float rate, float scheme, float discount, float gst1,
+			float gst2, float net, float grossTotal, float gstTotal, float netTotal) {
+		super();
+		this.mscn = mscn;
+		this.prod = prod;
+		this.mrp = mrp;
+		this.box = box;
+		this.rate = rate;
+		this.scheme = scheme;
+		this.discount = discount;
+		this.gst1 = gst1;
+		this.gst2 = gst2;
+		this.net = net;
+		this.grossTotal = grossTotal;
+		this.gstTotal = gstTotal;
+		this.netTotal = netTotal;
+	}
+
+}

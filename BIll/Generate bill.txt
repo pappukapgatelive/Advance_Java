@@ -1,0 +1,12 @@
+package practice;
+
+
+public class GenerateBill {
+	public static void main(String[] args) throws Exception {
+
+		Bill4 bill = new Bill4();
+		String finalBill = bill.generateBill();
+		
+		System.out.println(finalBill);
+	}
+}
